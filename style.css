@@ -1,0 +1,17 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main__form{
+    width: 500px;
+}
+
+.form--input{
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+}
