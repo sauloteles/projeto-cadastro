@@ -3,12 +3,27 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    /* background:linear-gradient() ; */
+
+}
+
+.main{
+    
+}
+legend{
+
+    font-weight: 700;
 }
 
 .main__form{
+    /* padding: 10px; */
     width: 500px;
 }
 
+fieldset{
+    height: 250px;
+
+}
 .form--input{
     width: 300px;
 
