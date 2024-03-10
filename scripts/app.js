@@ -10,9 +10,11 @@ const btnVizualizar = document.getElementById('btn-vizualizar')
 let listaCadastros = [];
 let listaCards = []
 let index = 0
+let editar = false
+let indexEditar
 
 class Usuario{
-    constructor(nome,email,numero){
+    constructor(nome,email,numero,index){
         this.nome = nome;
         this.email = email;
         this.numero = numero;
@@ -20,14 +22,24 @@ class Usuario{
     }
 
 }
-
-function salvarUsuario(){    
-    let usuario = new Usuario(nome.value,email.value,numero.value)
-    listaCadastros.push(usuario)
-    console.log(listaCadastros)
-    ++index;
-    limparInput()
+class Card{
+    constructor(cardHTML,btnEditar,btnDeletar,nome,email,numero,index){
+        this.cardHTML = cardHTML;
+        this.btnEditar = btnEditar;
+        this.btnDeletar = btnDeletar;
+        this.nome = nome;
+        this.email = email;
+        this.numero = numero;
+        this.index = index;
+    }
 }
+
+// function salvarUsuario(){    
+//     let usuario = new Usuario(nome.value,email.value,numero.value,index)
+//     ++index;
+//     limparInput()
+//     return usuario;
+// }
 
 function criarElemento(tipoElemento, tipoSeletor, nomeSeletor, conteudo) {
     let elemento = document.createElement(tipoElemento);
@@ -76,26 +88,34 @@ function criarCard(nome,email,numero,index) {
     cardBox2.appendChild(dados2)
     cardBox3.appendChild(dados3)
 
-    listaCards.push({cardConteudo:card,btnDeletar:btnDeletar,btnEditar:btnEditar,nome:nome,email:email,numero:numero,cardIndex:index})
+
+    listaCards.push(new Card(card,btnEditar,btnDeletar,dados1,dados2,dados3,index))
     cardMain.appendChild(card)
 }
 
-function vizualizarCards(lista){
-    let ultimoItem= lista.length-1
-    criarCard(lista[ultimoItem].nome,lista[ultimoItem].email,lista[ultimoItem].numero,email,lista[ultimoItem].index)
-
-}
 
 function limparInput(){
     nome.value=''
     email.value=''
     numero.value=''
-
 }
+
 form.addEventListener('submit',function(event){
     event.preventDefault()
-    salvarUsuario()
-    vizualizarCards(listaCadastros)
+   
+    if(!editar){ 
+        console.log('cadastrar')
+        criarCard(nome.value,email.value,numero.value,index)
+        ++index
+    }if(editar){
+        editar = false;
+        console.log(listaCards,indexEditar)
+        listaCards[indexEditar].nome.textContent = nome.value;
+        listaCards[indexEditar].email.textContent = email.value; 
+        listaCards[indexEditar].numero.textContent= numero.value; 
+    }
+    limparInput()
+   
 })
 
 
@@ -110,16 +130,19 @@ function telaForm(){
 
 function apagarDados(elem){
     console.log('click apagar')
-    cardMain.removeChild(elem.cardConteudo)
-    listaCadastros.splice(elem.cardIndex,1)
-    console.log(listaCadastros)
+    cardMain.removeChild(elem.cardHTML)
+    listaCards.splice(elem.index,1)
+    console.log(listaCards)
+    editar = false;
 }
 function editarDados(elem){
     console.log('click editar')
-    apagarDados(elem)
-    nome.value = elem.nome
-    email.value = elem.email
-    numero.value = elem.numero
+    nome.value = elem.nome.textContent
+    email.value = elem.email.textContent
+    numero.value = elem.numero.textContent
+    editar = true
+    indexEditar = elem.index;
+    
 }
 
 addEventListener('click',(e)=>{
@@ -127,7 +150,6 @@ addEventListener('click',(e)=>{
         if(e.target == elem.btnDeletar){
             apagarDados(elem)
         }if(e.target == elem.btnEditar){
-            // telaForm()
             editarDados(elem)
         }            
     })

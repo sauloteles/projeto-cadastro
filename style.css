@@ -49,7 +49,14 @@ fieldset{
     display: flex;
     justify-content: space-between;
     width: 500px;
+    margin-bottom: 15px;
+
+
 }
 .card-box{
     display: flex;
+}
+
+.main__form{
+    margin-bottom: 30px;
 }
