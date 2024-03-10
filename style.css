@@ -8,7 +8,10 @@
 }
 
 .main{
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 legend{
 
@@ -29,4 +32,24 @@ fieldset{
 
     display: flex;
     flex-direction: column;
+}
+.crud--title{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.none{
+    display: none;
+}
+.main__card{
+    display: flex;
+    flex-direction: column;
+}
+.card{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+.card-box{
+    display: flex;
 }
