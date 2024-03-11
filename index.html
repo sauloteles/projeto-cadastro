@@ -16,39 +16,28 @@
                 <legend>Cadastro de Funcionários</legend>
                 <div class="form--input">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" class="input-nome">
+                    <input type="text" name="nome" id="nome"  required>
                 </div>
                 <br>
                 <div class="form--input">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="input-email">
+                    <input type="email" name="email" id="email" autocomplete="email" required>
                 </div>
                 <br>
                 <div class="form--input">
-                    <label for="numero">Número</label>
-                    <input type="text" name="numero" id="numero" class="input-numero">
+                    <label for="telefone">Número</label>
+                    <input type="tel" name="contato" id="telefone"  minlength="11" maxlength="15"
+                    pattern="[0-9]+" autocomplete="tel" required/>
+ 
                 </div>
                 <br>
                 
                 <input type="submit" value="Cadastrar"  id="btn-cadastrar">
-                <!-- <button id="btn-vizualizar">Vizualizar</button>       -->
+
             </fieldset>
         </form>
         <div class="main__card">
-            <!-- <div class="card">
-                <div>
-                    <h3>Nome:</h3>
-                    <p class="dados--cadastro"></p>
-                </div>
-                <div>
-                    <h3>Email:</h3>
-                    <p class="dados--cadastro"></p>
-                </div>
-                <div>
-                    <h3>Numero:</h3>
-                    <p class="dados--cadastro"></p>
-                </div>
-            </div> -->
+
         </div>
         
     </main>
