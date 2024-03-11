@@ -4,24 +4,16 @@ const form = document.getElementsByClassName('main__form')[0]
 const cardMain = document.getElementsByClassName('main__card')[0]
 const nome = document.getElementById('nome')
 const email = document.getElementById('email')
-const numero = document.getElementById('numero')
+const numero = document.getElementById('telefone')
 const btnCadastrar = document.getElementById('btn-cadastrar')
 const btnVizualizar = document.getElementById('btn-vizualizar')
-let listaCadastros = [];
+
 let listaCards = []
 let index = 0
 let editar = false
 let indexEditar
 
-class Usuario{
-    constructor(nome,email,numero,index){
-        this.nome = nome;
-        this.email = email;
-        this.numero = numero;
-        this.index = index; 
-    }
 
-}
 class Card{
     constructor(cardHTML,btnEditar,btnDeletar,nome,email,numero,index){
         this.cardHTML = cardHTML;
@@ -33,13 +25,6 @@ class Card{
         this.index = index;
     }
 }
-
-// function salvarUsuario(){    
-//     let usuario = new Usuario(nome.value,email.value,numero.value,index)
-//     ++index;
-//     limparInput()
-//     return usuario;
-// }
 
 function criarElemento(tipoElemento, tipoSeletor, nomeSeletor, conteudo) {
     let elemento = document.createElement(tipoElemento);
@@ -72,7 +57,9 @@ function criarCard(nome,email,numero,index) {
     let div2 = criarElemento("div", "class", '', false);
     let btnDeletar = criarElemento("button", "class", '', 'deletar');
     let btnEditar = criarElemento("button", "class", '', 'editar');
+
     [div1,div2].map((elem) => {card.appendChild(elem)});
+
     div1.appendChild(cardBox1)
     div1.appendChild(cardBox2)
     div1.appendChild(cardBox3)
@@ -87,7 +74,6 @@ function criarCard(nome,email,numero,index) {
     cardBox1.appendChild(dados1)
     cardBox2.appendChild(dados2)
     cardBox3.appendChild(dados3)
-
 
     listaCards.push(new Card(card,btnEditar,btnDeletar,dados1,dados2,dados3,index))
     cardMain.appendChild(card)
