@@ -13,7 +13,6 @@ let index = 0
 let editar = false
 let indexEditar
 
-
 class Card{
     constructor(cardHTML,btnEditar,btnDeletar,nome,email,numero,index){
         this.cardHTML = cardHTML;
@@ -24,6 +23,7 @@ class Card{
         this.numero = numero;
         this.index = index;
     }
+
 }
 
 function criarElemento(tipoElemento, tipoSeletor, nomeSeletor, conteudo) {
@@ -117,6 +117,7 @@ function telaForm(){
 function apagarDados(elem){
     console.log('click apagar')
     cardMain.removeChild(elem.cardHTML)
+    elem.index = listaCards.findIndex(elem)
     listaCards.splice(elem.index,1)
     console.log(listaCards)
     editar = false;
