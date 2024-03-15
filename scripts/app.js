@@ -6,7 +6,6 @@ const nome = document.getElementById('nome')
 const email = document.getElementById('email')
 const numero = document.getElementById('telefone')
 const btnCadastrar = document.getElementById('btn-cadastrar')
-const btnVizualizar = document.getElementById('btn-vizualizar')
 
 let listaCards = []
 let index = 0
@@ -117,7 +116,7 @@ function telaForm(){
 function apagarDados(elem){
     console.log('click apagar')
     cardMain.removeChild(elem.cardHTML)
-    elem.index = listaCards.findIndex(elem)
+    console.log( elem )
     listaCards.splice(elem.index,1)
     console.log(listaCards)
     editar = false;
